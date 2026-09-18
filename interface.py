@@ -1,8 +1,9 @@
-import tkinter as tk
+from tkinter import Tk
 
-class Window(tk):
+class Window(Tk):
 
     def __init__(self):
         super().__init__()
 
-        self.
+        self.geometry("400x400")
+        self.title("Connect 4")
