@@ -12,14 +12,21 @@ class Window(tk.Tk):
 
     def init_canva(self, size):
         canva = tk.Canvas(self)
-        canva.pack(fill="both", expand=True)
+        canva.pack(fill=tk.BOTH, expand=tk.YES)
 
-        canva.create_rectangle(30, 30, 300, 300, fill='grey', outline='')
+        self.bind("<Configure>", self.on_resize)
 
-        distance = min(canva.winfo_reqwidth(), canva.winfo_reqheight()) * 0.17
+        return canva
+
+    def on_resize(self, event):
+        pass
+        '''self.canva.create_rectangle(30, 30, 300, 300, fill='grey', outline='')
+        distance = min(self.winfo_reqwidth(), self.winfo_reqheight()) * 0.17
+        initial = []
         h = [30, 30, 30 + distance * 0.7, 30 + distance * 0.7]
         for i in range(size[0]):
             for j in range(size[1]):
-                canva.create_oval(h[0] + i * distance, h[1] + j * distance, h[2] + i * distance, h[3] + j * distance)
-
-        return canva
+                canva.create_oval(h[0] + i * distance,
+                                  h[1] + j * distance,
+                                  h[2] + i * distance,
+                                  h[3] + j * distance)'''
