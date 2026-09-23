@@ -4,6 +4,8 @@ class Window(tk.Tk):
 
     def __init__(self):
         super().__init__()
+        self.width = 400
+        self.height = 400
 
         self.canva = self.init_canva((8, 8))
 
@@ -14,14 +16,15 @@ class Window(tk.Tk):
         canva = tk.Canvas(self)
         canva.pack(fill=tk.BOTH, expand=tk.YES)
 
-        self.bind("<Configure>", self.on_resize)
+        canva.bind("<Configure>", self.on_resize)
 
         return canva
 
     def on_resize(self, event):
-        pass
-        '''self.canva.create_rectangle(30, 30, 300, 300, fill='grey', outline='')
-        distance = min(self.winfo_reqwidth(), self.winfo_reqheight()) * 0.17
+        self.height = event.height
+        self.width = event.width
+        self.canva.create_rectangle(30 , 30, 300, 300, fill='grey', outline='')
+        '''distance = min(self.winfo_reqwidth(), self.winfo_reqheight()) * 0.17
         initial = []
         h = [30, 30, 30 + distance * 0.7, 30 + distance * 0.7]
         for i in range(size[0]):
