@@ -38,8 +38,8 @@ class Window(tk.Tk):
 
     def create_board(self, p):
         r = min(self.width, self.height) * 0.002  # the dynamic ratio
-        d = [(self.d_oval + self.d_oval * 0.2) * r * self.size[0],
-             (self.d_oval + self.d_oval * r * 0.2) * r * self.size[0]] # rectangle dimension
+        d = [(self.d_oval + self.d_oval * 0.2) * r * self.size[0] + self.d_oval * 0.6 * r,
+             (self.d_oval + self.d_oval * 0.2) * r * self.size[1] + self.d_oval * 0.6 * r] # rectangle dimension
         g = 30 * r # gap between rectangles corner to allow the arc
 
         self.canva.create_rectangle(
@@ -92,6 +92,8 @@ class Window(tk.Tk):
 
     def create_empty_cells(self, p):
         r = min(self.width, self.height) * 0.002  # the dynamic ratio
+        p = [p[0] + self.d_oval * 0.4 * r,
+             p[1] + self.d_oval * 0.4 * r]
 
         d = [0, 0, self.d_oval * r, self.d_oval * r] # dimension of the ovals
         dist = self.d_oval * r * 1.2 # distance between two origin points of cells
