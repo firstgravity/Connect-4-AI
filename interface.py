@@ -15,12 +15,12 @@ class Window(tk.Tk):
             for j in range(self.size[1]):
                 self.color[-1].append('white')
 
-        self.canva = self.init_canva((8, 8))
+        self.canva = self.init_canva()
 
         self.geometry(f"{self.width}x{self.height}")
         self.title("Connect 4")
 
-    def init_canva(self, size):
+    def init_canva(self):
         canva = tk.Canvas(self)
         canva.pack(fill="both", expand=tk.YES)
         canva.bind("<Configure>", self.on_resize)
@@ -31,6 +31,10 @@ class Window(tk.Tk):
         # Update the dimension and variable creation
         self.height = event.height
         self.width = event.width
+
+        r = min(self.width, self.height) * 0.002
+        self.b_position = [(self.width - (self.d_oval + self.d_oval * 0.2) * r * self.size[0] - self.d_oval * 0.6 * r)//2,
+                           (self.height - (self.d_oval + self.d_oval * 0.2) * r * self.size[1] - self.d_oval * 0.6 * r)//2]
 
         ## Background reset
         self.canva.create_rectangle(0, 0, self.width, self.height, fill='white')
