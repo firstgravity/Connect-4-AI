@@ -33,4 +33,14 @@ class Game:
         return mov_av
 
     def win(self, player):
-        pass
+        for i in range(self.board_d[0]):
+            count = 0
+            for j in range(self.board_d[1]-1):
+                if count < 4 :
+                    if self.board[i][j] == self.board[i][j+1]:
+                        count += 1
+                    else :
+                        count = 0
+                else :
+                    return 1 if player == self.board[i][j+1] else -1
+        
