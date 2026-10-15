@@ -15,6 +15,22 @@ class Game:
         total_mov = 0
         mov_av = []
 
-        for i in self.board:
-            for j in i:
-                if 
+        if self.end:
+            return []
+
+        for i in range(self.board_d[0]):
+            for j in range(self.board_d[1]):
+                if not(j in [x["pos"][1] for x in mov_av]):
+                    if self.board[j][i] == 0:
+                        mov_av.append({"player":None, "position":(i, j)})
+                    else:
+                        total_mov += 1
+
+        player = total_mov % self.nb_player
+        for i in mov_av:
+            i["player"] = player
+
+        return mov_av
+
+    def win(self, player):
+        pass
